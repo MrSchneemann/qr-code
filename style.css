@@ -1,0 +1,152 @@
+/* Global styles */
+:root {
+    --primary: #1a73e8;
+    --accent: #0d6efd;
+    --secondary: #f1f1f1;
+    --background: #fff;
+    --text: #333;
+    --font-family: 'Inter', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body and header styles */
+body {
+    font-family: var(--font-family), sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    width: 100%;
+    background: var(--background); /* White background */
+    padding: 12px 0;
+}
+
+.header h1 {
+    color: #f093fb; /* fallback color */
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 23%);
+    -webkit-background-clip: text; /* clip the gradient to the text */
+    -webkit-text-fill-color: transparent; /* hide the original text */
+
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+}
+
+.header-container {
+    max-width: 100%;
+    margin-left: 20px;
+    text-align: left;
+}
+
+/* Container styles */
+.container {
+    background: var(--secondary);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+/* Form and input styles */
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: var(--font-family), sans-serif;
+}
+
+input[type="submit"],
+.button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary);
+    color: var(--background);
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover,
+.button:hover {
+    background-color: var(--accent);
+    opacity: 0.8;
+}
+
+.button:active {
+    background-color: var(--accent);
+    transform: translateY(4px);
+}
+
+/* QR code display and export button */
+#qr-code {
+    margin: 20px 0;
+}
+
+#error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px 20px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+        padding: 8px;
+        margin-bottom: 15px;
+    }
+
+    input[type="submit"],
+    .button {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+}
+
+/* Add focus styles for better accessibility */
+input:focus,
+.button:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
