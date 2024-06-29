@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #qr-code {
+            margin: 20px 0;
+        }
+
+        #export {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        #export:hover {
+            background-color: #218838;
+        }
+
+        .button {
+            display: inline-block;
+            font-size: 1em;
+            padding: 10px 20px;
+            margin: 10px 2px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+        }
+
+        .button:hover {
+            background-color: #3e8e41;
+        }
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px 20px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+                margin-bottom: 15px;
+            }
+
+            input[type="text"] {
+                padding: 8px;
+                margin-bottom: 15px;
+            }
+
+            input[type="submit"],
+            #export {
+                padding: 8px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>QR Code Generator</h1>
+    <form id="qr-form">
+        <label for="text">Enter the text or URL you want to convert into a QR code:</label>
+        <input type="text" id="text" name="text" placeholder="Enter text or URL" required>
+        <input type="submit" value="Generate QR Code" class="button">
+        <div id="error-message" class="error" style="display: none;">The text is too large.</div>
+    </form>
+
+    <div id="qr-code"></div>
+    <button id="export" style="display: none;" class="button">Export</button>
+</div>
+
+<script>
+    document.getElementById('qr-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const textInput = document.getElementById('text').value;
+        const textBytes = new TextEncoder().encode(textInput).length;
+        const errorMessage = document.getElementById('error-message');
+
+        if (textBytes > 2953) {
+            errorMessage.style.display = 'block';
+        } else {
+            errorMessage.style.display = 'none';
+
+            QRCode.toDataURL(textInput, { errorCorrectionLevel: 'H' })
+                .then(url => {
+                    const img = document.createElement('img');
+                    img.src = url;
+                    document.getElementById('qr-code').innerHTML = '';
+                    document.getElementById('qr-code').appendChild(img);
+                    document.getElementById('export').style.display = 'block';
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    });
+
+    document.getElementById('export').addEventListener('click', function() {
+        const img = document.getElementById('qr-code').querySelector('img');
+        const a = document.createElement('a');
+        a.href = img.src;
+        a.download = 'qr-code.png';
+        a.click();
+    });
+</script>
+</body>
+</html>
