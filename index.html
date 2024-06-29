@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/img/icon.png">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     <title>QR Code Generator</title>
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </head>
 <body>
 <header class="header">
     <div class="header-container">
+        <img src="/img/icon.png" alt="Logo" class="logo">
         <h1>QR Code Generator</h1>
     </div>
 </header>
 
 <div class="container">
-    <h1>QR Code Generator</h1>
     <form id="qr-form" aria-labelledby="form-label">
         <label for="text" id="form-label">Enter the text or URL you want to convert into a QR code:</label>
         <input type="text" id="text" name="text" placeholder="Enter text or URL" required aria-required="true">
@@ -29,6 +31,12 @@
     <button id="export" style="display: none;" class="button">Export</button>
 </div>
 
+<footer class="footer">
+    <div class="footer-container">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" class="github-logo">
+        <p><a href="https://github.com/MrSchneemann/qr-code">Open-source project by Leopold Loges</a></p>
+    </div>
+</footer>
 
 <script>
     document.getElementById('qr-form').addEventListener('submit', function(event) {

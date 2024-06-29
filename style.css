@@ -1,11 +1,11 @@
 /* Global styles */
 :root {
-    --primary: #1a73e8;
-    --accent: #0d6efd;
-    --secondary: #f1f1f1;
-    --background: #fff;
-    --text: #333;
-    --font-family: 'Inter', sans-serif;
+    --primary: #004379;
+    --accent: #002a4d;
+    --secondary: #ffffff;
+    --background: #ffffff;
+    --text: #333333;
+    --font-family: 'Montserrat', sans-serif;
 }
 
 *,
@@ -31,25 +31,31 @@ body {
 
 .header {
     width: 100%;
-    background: var(--background); /* White background */
+    background: var(--secondary);
     padding: 12px 0;
 }
 
-.header h1 {
-    color: #f093fb; /* fallback color */
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 23%);
-    -webkit-background-clip: text; /* clip the gradient to the text */
-    -webkit-text-fill-color: transparent; /* hide the original text */
-
-    font-size: 2em;
-    margin: 0;
-    padding: 0;
-}
-
 .header-container {
+    display: flex;
+    align-items: center;
     max-width: 100%;
     margin-left: 20px;
-    text-align: left;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.header h1 {
+    font-size: 2em;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,155,1) 66%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* Container styles */
@@ -73,12 +79,13 @@ label {
     display: block;
     margin-bottom: 10px;
     color: var(--text);
+    font-weight: 600;
 }
 
 input[type="text"] {
     width: calc(100% - 22px);
     padding: 10px;
-    border: 1px solid var(--primary);
+    border: 2px solid var(--primary);
     border-radius: 5px;
     margin-bottom: 20px;
     background-color: var(--background);
@@ -95,6 +102,7 @@ input[type="submit"],
     background-color: var(--primary);
     color: var(--background);
     font-size: 1em;
+    font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -102,12 +110,11 @@ input[type="submit"],
 input[type="submit"]:hover,
 .button:hover {
     background-color: var(--accent);
-    opacity: 0.8;
 }
 
 .button:active {
     background-color: var(--accent);
-    transform: translateY(4px);
+    transform: translateY(2px);
 }
 
 /* QR code display and export button */
@@ -115,10 +122,35 @@ input[type="submit"]:hover,
     margin: 20px 0;
 }
 
+#qr-code img {
+    max-width: 300px;
+}
+
 #error-message {
     color: red;
     font-weight: bold;
     margin-top: 10px;
+}
+
+/* Footer styles */
+.footer {
+    width: 100%;
+    background: var(--secondary);
+    padding: 10px 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.github-logo {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
 }
 
 /* Responsive design */
