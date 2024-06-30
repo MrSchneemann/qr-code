@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     <title>QR Code Generator</title>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -22,7 +22,23 @@
 <div class="container">
     <form id="qr-form" aria-labelledby="form-label">
         <label for="text" id="form-label">Enter the text or URL you want to convert into a QR code:</label>
-        <input type="text" id="text" name="text" placeholder="Enter text or URL" required aria-required="true">
+        <input type="text" id="text" name="text" placeholder="Enter text or URL" required aria-required="true" aria-describedby="error-message">
+
+        <!-- Styling options -->
+        <div class="input-row">
+            <div class="input-group">
+                <label for="color">Color:</label>
+                <div class="custom-color-picker" id="custom-color-picker">
+                    <div class="color-preview" id="color-preview" style="background-color: #000000;"></div>
+                    <input type="color" id="color" name="color" value="#000000" style="display: none;">
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="size">Size:</label>
+                <input type="number" id="size" name="size" value="200" min="100" max="500">
+            </div>
+        </div>
+
         <input type="submit" value="Generate QR Code" class="button">
         <div id="error-message" class="error" role="alert" style="display: none;">The text is too large.</div>
     </form>
@@ -34,44 +50,10 @@
 <footer class="footer">
     <div class="footer-container">
         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" class="github-logo">
-        <p><a href="https://github.com/MrSchneemann/qr-code">Open-source project by Leopold Loges</a></p>
+        <p><a href="https://github.com/MrSchneemann/qr-code" target="_blank" rel="noopener noreferrer">Open-source project by Leopold Loges</a></p>
     </div>
 </footer>
 
-<script>
-    document.getElementById('qr-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const textInput = document.getElementById('text').value;
-        const textBytes = new TextEncoder().encode(textInput).length;
-        const errorMessage = document.getElementById('error-message');
-
-        if (textBytes > 2953) {
-            errorMessage.style.display = 'block';
-        } else {
-            errorMessage.style.display = 'none';
-
-            QRCode.toDataURL(textInput, { errorCorrectionLevel: 'H' })
-                .then(url => {
-                    const img = new Image();
-                    img.src = url;
-                    document.getElementById('qr-code').innerHTML = '';
-                    document.getElementById('qr-code').appendChild(img);
-                    document.getElementById('export').style.display = 'block';
-                })
-                .catch(error => console.error('Error:', error));
-        }
-    });
-
-    document.getElementById('export').addEventListener('click', function() {
-        const img = document.getElementById('qr-code').querySelector('img');
-        if (img) {
-            const a = document.createElement('a');
-            a.href = img.src;
-            a.download = 'qr-code.png';
-            a.click();
-        }
-    });
-</script>
+<script src="index.js"></script>
 </body>
 </html>
