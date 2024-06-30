@@ -67,7 +67,8 @@ body {
     text-align: center;
     width: 100%;
     max-width: 400px;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /* Form and input styles */
@@ -167,9 +168,43 @@ input[type="submit"]:hover,
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 5px solid var(--primary);
     margin-left: 10px;
     margin-bottom: 2px;
+}
+
+.settings-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--text);
+    transition: transform 0.3s;
+}
+
+.triangle.open {
+    transform: rotate(180deg);
+}
+
+.settings-panel {
+    display: none;
+    padding: 10px;
+    background: var(--secondary);
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.expert-settings.open .settings-panel {
+    display: block;
+    margin-bottom: 10px;
 }
 
 /* QR code display and export button */
