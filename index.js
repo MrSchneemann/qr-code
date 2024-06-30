@@ -37,24 +37,14 @@ document.getElementById('export').addEventListener('click', function() {
     }
 });
 
-// Event listener to open color picker when clicking custom color picker button
-document.getElementById('custom-color-picker').addEventListener('click', function() {
-    document.getElementById('color').click();
-});
-
-// Event listener to update color preview
-document.getElementById('color').addEventListener('input', function() {
-    document.getElementById('color-preview').style.backgroundColor = this.value;
-});
-
 // Event listener to toggle expert settings panel
 document.getElementById('settings-toggle').addEventListener('click', function() {
     const triangleIcon = document.querySelector('.triangle');
     const settingsPanel = document.getElementById('settings-panel');
-    const expertSettings = document.getElementById('expert-settings');
+    const Settings = document.getElementById('settings');
 
-    expertSettings.classList.toggle('open');
-    settingsPanel.style.display = expertSettings.classList.contains('open') ? 'block' : 'none';
+    Settings.classList.toggle('open');
+    settingsPanel.style.display = Settings.classList.contains('open') ? 'block' : 'none';
     triangleIcon.classList.toggle('open');
 });
 

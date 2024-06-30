@@ -24,30 +24,27 @@
         <label for="text" id="form-label">Enter the text or URL you want to convert into a QR code:</label>
         <input type="text" id="text" name="text" placeholder="Enter text or URL" required aria-required="true" aria-describedby="error-message">
 
-        <!-- Styling options -->
         <div class="input-row">
-            <div class="input-group">
-                <label for="color">Color:</label>
-                <div class="custom-color-picker" id="custom-color-picker">
-                    <div class="color-preview" id="color-preview" style="background-color: #000000;"></div>
-                    <input type="color" id="color" name="color" value="#000000" style="display: none;">
-                </div>
-            </div>
-            <div class="input-group">
-                <label for="size">Size:</label>
-                <input type="number" id="size" name="size" value="200" min="10" max="1000">
-            </div>
+            <!-- Settings //TODO: add QR-Code Type (WLAN, vCard, Website, Text, etc.) -->
         </div>
 
-        <div id="expert-settings" class="expert-settings">
+        <div id="settings" class="settings">
             <div id="settings-toggle" class="settings-toggle">
-                <span>Expert Settings</span>
+                <span>Settings</span>
                 <span class="triangle"></span>
             </div>
             <div id="settings-panel" class="settings-panel">
                 <div class="input-group">
+                    <label for="color">Color:</label>
+                    <input type="color" id="color" name="color" value="#000000">
+                </div>
+                <div class="input-group">
                     <label for="background-color">Background Color:</label>
                     <input type="color" id="background-color" name="background-color" value="#ffffff">
+                </div>
+                <div class="input-group">
+                    <label for="size">Size:</label>
+                    <input type="number" id="size" name="size" value="200" min="10" max="1000">
                 </div>
             </div>
         </div>

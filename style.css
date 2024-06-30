@@ -1,4 +1,3 @@
-/* Global styles */
 :root {
     --primary: #004379;
     --accent: #002a4d;
@@ -16,7 +15,6 @@
     padding: 0;
 }
 
-/* Body and header styles */
 body {
     font-family: var(--font-family), sans-serif;
     background-color: var(--background);
@@ -58,7 +56,6 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* Container styles */
 .container {
     background: var(--secondary);
     padding: 20px 30px;
@@ -71,7 +68,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* Form and input styles */
 form {
     margin-bottom: 20px;
 }
@@ -92,19 +88,14 @@ label {
     display: flex;
     flex-direction: column;
     text-align: left;
-    padding-right: 20px;
+    margin-bottom: 10px;
 }
 
 .input-group:last-child {
-    padding-right: 0;
-}
-
-.input-group:nth-child(1) {
-    flex: 2;
+    margin-bottom: 0;
 }
 
 input[type="text"],
-input[type="color"],
 input[type="number"] {
     padding: 10px;
     border: 2px solid var(--primary);
@@ -120,6 +111,15 @@ input[type="number"] {
 input[type="color"],
 input[type="number"] {
     width: 100%;
+}
+
+input[type="color"]{
+    border: 2px solid var(--primary);
+    border-radius: 5px;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: var(--font-family), sans-serif;
+    height: 39px;
 }
 
 input[type="submit"],
@@ -144,32 +144,6 @@ input[type="submit"]:hover,
 .button:active {
     background-color: var(--accent);
     transform: translateY(2px);
-}
-
-/* Custom color picker styles */
-.custom-color-picker {
-    position: relative;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.color-preview {
-    width: 39px;
-    height: 39px;
-    border: 2px solid var(--primary);
-    border-radius: 5px;
-    background-color: #000000;
-}
-
-.custom-color-picker::after {
-    content: '';
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    margin-left: 10px;
-    margin-bottom: 2px;
 }
 
 .settings-toggle {
@@ -200,14 +174,14 @@ input[type="submit"]:hover,
     border: 1px solid var(--primary);
     border-radius: 5px;
     margin-top: 10px;
+    width: 100%;
 }
 
-.expert-settings.open .settings-panel {
+.settings.open .settings-panel {
     display: block;
     margin-bottom: 10px;
 }
 
-/* QR code display and export button */
 #qr-code {
     margin: 20px 0;
 }
@@ -262,7 +236,6 @@ input[type="submit"]:hover,
     }
 }
 
-/* Add focus styles for better accessibility */
 input:focus,
 .button:focus {
     outline: 2px solid var(--accent);
