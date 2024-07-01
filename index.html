@@ -21,11 +21,21 @@
 
 <div class="container">
     <form id="qr-form" aria-labelledby="form-label">
-        <label for="text" id="form-label">Enter the text or URL you want to convert into a QR code:</label>
-        <input type="text" id="text" name="text" placeholder="Enter text or URL" required aria-required="true" aria-describedby="error-message">
+        <label for="qr-type" id="form-label">Select the QR Code Type:</label>
+        <select id="qr-type" name="qr-type" required aria-required="true" aria-describedby="error-message">
+            <option value="text">Text</option>
+            <option value="url">Website URL</option>
+            <option value="wlan">WLAN</option>
+            <option value="vcard">vCard</option>
+        </select>
+
+        <div id="input-fields">
+            <label for="text">Enter the text or URL you want to convert into a QR code:</label>
+            <input type="text" id="text" name="text" placeholder="Enter text or URL" required aria-required="true" aria-describedby="error-message">
+        </div>
 
         <div class="input-row">
-            <!-- Settings //TODO: add QR-Code Type (WLAN, vCard, Website, Text, etc.) -->
+            <!-- Settings -->
         </div>
 
         <div id="settings" class="settings">
